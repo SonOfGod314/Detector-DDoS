@@ -7,9 +7,9 @@ from collections import deque, defaultdict
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 
-LOG_PATH = "/var/log/nginx/access.log"  # ou o caminho correto
+LOG_PATH = "/var/log/nginx/access.log"  
 MAX_REQUESTS = 100
-TIME_WINDOW = 10  # segundos
+TIME_WINDOW = 10 
 
 ip_requests = defaultdict(lambda: deque())
 
@@ -21,7 +21,7 @@ class LogHandler(FileSystemEventHandler):
     def on_modified(self, event):
         if event.src_path.endswith("access.log"):
             with open(event.src_path, 'r') as f:
-                lines = f.readlines()[-20:]  # lê últimas linhas
+                lines = f.readlines()[-20:] 
                 now = time.time()
                 for line in lines:
                     ip = extract_ip(line)

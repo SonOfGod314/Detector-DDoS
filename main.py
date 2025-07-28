@@ -1,5 +1,3 @@
-# main.py
-
 import time
 from collections import defaultdict, deque
 from firewall import bloquear_ip
@@ -10,9 +8,9 @@ import os
 import re
 
 # Configurações
-LOG_PATH = "C:\\xampp\\apache\\logs\\access.log"  # Modifique para o caminho do seu log
+LOG_PATH = "C:\\xampp\\apache\\logs\\access.log" # caminho do log do Apache
 MAX_REQUESTS = 100
-TIME_WINDOW = 10  # segundos
+TIME_WINDOW = 10  # (segundos)
 BLOQUEAR_IP = True
 GERAR_RELATORIO = True
 
@@ -22,7 +20,6 @@ ip_contador = defaultdict(int)
 
 # Expressão regular para extrair IP
 def extrair_ip(linha):
-    # Busca um endereço IPv4 ou IPv6
     match = re.search(r"((\d{1,3}\.){3}\d{1,3}|::1)", linha)
     return match.group(1) if match else None
 
@@ -30,7 +27,7 @@ def extrair_ip(linha):
 def monitorar_log():
     print(f"[INFO] Monitorando {LOG_PATH}...")
     with open(LOG_PATH, 'r') as log:
-        log.seek(0, os.SEEK_END)  # vai para o final
+        log.seek(0, os.SEEK_END) 
         while True:
             linha = log.readline()
             if not linha:
@@ -57,15 +54,15 @@ def monitorar_log():
 def detectar_anomalias():
     while True:
         if ip_contador:
-            # Coletar os dados
+            # Coleta de dados
             dados = list(ip_contador.values())
             ips = list(ip_contador.keys())
 
-            # Treinar o modelo com os dados coletados
+            # Treinamento do modelo com os dados coletados
             detector = AnomalyDetector()
             detector.treinar(dados)
 
-            # Detectar anomalias
+            # Detectcao de anomalias
             resultados = detector.detectar(dados)
 
             print("\n[ML] Verificação anômala:")
