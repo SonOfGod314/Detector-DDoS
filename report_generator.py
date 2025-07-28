@@ -4,6 +4,8 @@ import json
 import os
 from datetime import datetime
 
+os.makedirs("relatorios", exist_ok=True)
+
 def gerar_relatorio_json(ip_counts):
     if not ip_counts:
         print("[RELATÓRIO] Nenhum IP registrado até o momento. Relatório não gerado.")

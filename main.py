@@ -78,7 +78,7 @@ def gerar_relatorio_periodico():
         print("[DEBUG] IPs registrados até agora:", dict(ip_contador))
         if GERAR_RELATORIO:
             gerar_relatorio_json(dict(ip_contador))
-        time.sleep(10)
+        time.sleep(30)
     
 # Execução dos módulos em paralelo
 if __name__ == "__main__":
