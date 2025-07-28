@@ -100,7 +100,6 @@ Cada relatório contém algo como:
 ```json
 {
   "127.0.0.1": 681,
-  "192.168.0.5": 22
 }
 ```
 
