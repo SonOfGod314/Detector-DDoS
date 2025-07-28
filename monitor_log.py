@@ -1,4 +1,6 @@
-# monitor_log.py
+# Monitoramento e Detecção com base em logs (access.log)
+# Objetivo: Ler o log em tempo real, extrair IPs, contar requisições e disparar alertas.
+
 import time
 import re
 from collections import deque, defaultdict
